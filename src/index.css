@@ -7,8 +7,12 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-800 antialiased overflow-hidden;
+    @apply bg-slate-50 text-slate-800 antialiased overflow-hidden transition-colors duration-300;
   }
+}
+
+.dark body {
+  @apply bg-slate-950 text-slate-100;
 }
 
 /* Custom Scrollbar for Bento theme */
@@ -26,8 +30,16 @@
   border-radius: 10px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: theme('colors.slate.800');
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: theme('colors.slate.300');
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.slate.700');
 }
 
 .markdown-body pre {
@@ -36,4 +48,8 @@
 
 .markdown-body code {
   @apply bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded text-sm font-mono border border-blue-100;
+}
+
+.dark .markdown-body code {
+  @apply bg-blue-900/30 text-blue-300 border-blue-800/50;
 }

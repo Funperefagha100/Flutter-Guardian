@@ -75,9 +75,9 @@ export const FlutterSimulator: React.FC<SimulatorProps> = ({ code }) => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center bg-slate-200">
+    <div className="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-900 transition-colors duration-300">
       {/* Phone Frame */}
-      <div className="relative w-[280px] h-full max-h-[580px] bg-white rounded-[2.5rem] shadow-2xl border-[6px] border-slate-800 overflow-hidden flex flex-col scale-90 md:scale-100 transition-transform duration-500">
+      <div className="relative w-[280px] h-full max-h-[580px] bg-white dark:bg-white rounded-[2.5rem] shadow-2xl border-[6px] border-slate-800 dark:border-slate-800 overflow-hidden flex flex-col scale-90 md:scale-100 transition-transform duration-500">
         {/* Notch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-slate-800 rounded-b-2xl z-20" />
         
@@ -89,7 +89,7 @@ export const FlutterSimulator: React.FC<SimulatorProps> = ({ code }) => {
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto bg-white p-4 relative">
+        <div className="flex-1 overflow-y-auto bg-white p-4 relative custom-scrollbar">
           <AnimatePresence mode="wait">
             <motion.div
               key={code}
@@ -138,9 +138,9 @@ export const FlutterSimulator: React.FC<SimulatorProps> = ({ code }) => {
         
         {/* Navigation Bar (Mock) */}
         <div className="h-14 border-t border-slate-100 flex items-center justify-around px-2 pb-1 bg-white/80 backdrop-blur-sm">
-          <div className="flex flex-col items-center text-blue-600">
+          <div className="flex flex-col items-center text-blue-600 font-bold">
             <Home size={18} />
-            <span className="text-[9px] font-bold mt-0.5">Home</span>
+            <span className="text-[9px] mt-0.5">Home</span>
           </div>
           <div className="flex flex-col items-center text-slate-300 group hover:text-slate-500 cursor-pointer">
             <Search size={18} />
