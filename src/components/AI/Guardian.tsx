@@ -53,36 +53,22 @@ export const Guardian: React.FC<GuardianProps> = ({ currentCode, currentTask }) 
   };
 
   return (
-    <div className="flex flex-col h-full bg-white dark:bg-slate-900 transition-colors duration-300">
-      {/* Bento Header */}
-      <div className="px-6 py-4 flex items-center justify-between border-b border-slate-100 dark:border-slate-800 shrink-0">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center text-2xl shadow-inner">🤖</div>
-          <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 uppercase tracking-wide text-xs">Guardian Feedback</h2>
-            <p className="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-widest">{isLoading ? 'AI is thinking...' : 'System Optimal'}</p>
-          </div>
-        </div>
-        <div className="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-[10px] font-bold rounded-full border border-green-100 dark:border-green-900/30 shadow-sm">
-           WIDGET ENGINE: LIVE
-        </div>
-      </div>
-
-      <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50/30 dark:bg-slate-900/30 custom-scrollbar">
+    <div className="flex-1 flex flex-col bg-white dark:bg-[#1e1e1e] transition-colors duration-300 min-h-0">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
         <AnimatePresence>
           {messages.map((msg, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
-              <div className={`flex gap-3 max-w-[85%] ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                <div className={`w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-sm overflow-hidden ${msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-400'}`}>
-                  {msg.role === 'user' ? <User size={14} /> : <div className="text-sm">🤖</div>}
+              <div className={`flex gap-2.5 max-w-[90%] ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                <div className={`w-7 h-7 rounded-md flex-shrink-0 flex items-center justify-center shadow-sm overflow-hidden ${msg.role === 'user' ? 'bg-[#007acc] text-white' : 'bg-slate-100 dark:bg-[#252526] border border-slate-200 dark:border-[#333] text-slate-400 dark:text-gray-400'}`}>
+                  {msg.role === 'user' ? <User size={12} /> : <div className="text-xs">🤖</div>}
                 </div>
-                <div className={`p-4 rounded-3xl text-sm shadow-sm ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-tl-none border border-slate-200 dark:border-slate-700'}`}>
-                   <div className="prose prose-sm prose-slate dark:prose-invert max-w-none prose-p:leading-relaxed prose-code:bg-blue-50 dark:prose-code:bg-blue-900/30 prose-code:text-blue-700 dark:prose-code:text-blue-300 prose-code:px-1 prose-code:rounded">
+                <div className={`px-3 py-2 rounded-lg text-[12px] shadow-sm ${msg.role === 'user' ? 'bg-[#007acc] text-white' : 'bg-slate-50 dark:bg-[#252526] text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-[#333]'}`}>
+                   <div className={`prose prose-xs ${msg.role === 'user' ? 'prose-invert' : 'dark:prose-invert'} max-w-none prose-p:leading-normal prose-code:bg-blue-900/30 prose-code:text-blue-300 prose-code:px-1 prose-code:rounded`}>
                     <ReactMarkdown>{msg.content}</ReactMarkdown>
                   </div>
                 </div>
@@ -94,38 +80,38 @@ export const Guardian: React.FC<GuardianProps> = ({ currentCode, currentTask }) 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex justify-start gap-3"
+            className="flex justify-start gap-2.5"
           >
-            <div className="w-8 h-8 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-sm shadow-sm">
+            <div className="w-7 h-7 rounded-md bg-slate-100 dark:bg-[#252526] border border-slate-200 dark:border-[#333] flex items-center justify-center text-xs shadow-sm">
                🤖
             </div>
-            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4 rounded-3xl shadow-sm rounded-tl-none px-6">
+            <div className="bg-slate-50 dark:bg-[#252526] border border-slate-200 dark:border-[#333] p-2 rounded-lg shadow-sm px-4">
               <span className="flex gap-1">
-                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
-                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+                <span className="w-1 h-1 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
+                <span className="w-1 h-1 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                <span className="w-1 h-1 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
               </span>
             </div>
           </motion.div>
         )}
       </div>
 
-      <div className="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 shrink-0">
+      <div className="p-3 bg-white dark:bg-[#1e1e1e] border-t border-slate-200 dark:border-[#333] shrink-0">
         <div className="relative">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-            placeholder="Ask Cora about your Flutter code..."
-            className="w-full pl-6 pr-14 py-4 bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 rounded-3xl text-sm focus:outline-none focus:ring-4 focus:ring-blue-500/10 transition-all font-medium text-slate-700 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600"
+            placeholder="Ask the Guardian..."
+            className="w-full pl-3 pr-10 py-1.5 bg-slate-50 dark:bg-[#252526] border border-slate-200 dark:border-[#333] rounded text-[12px] focus:outline-none focus:ring-1 focus:ring-[#007acc] transition-all text-slate-800 dark:text-gray-200 placeholder:text-slate-400 dark:placeholder:text-gray-500"
           />
           <button
             onClick={handleSend}
             disabled={isLoading || !input.trim()}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-blue-600 text-white rounded-2xl flex items-center justify-center hover:bg-blue-700 disabled:bg-slate-200 dark:disabled:bg-slate-800 disabled:text-slate-400 dark:disabled:text-slate-600 transition-all shadow-lg shadow-blue-600/20"
+            className="absolute right-1 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center text-slate-400 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white disabled:opacity-30 transition-all font-bold"
           >
-            <Send size={16} />
+            <Send size={14} />
           </button>
         </div>
       </div>
