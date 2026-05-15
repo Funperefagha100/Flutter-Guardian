@@ -7,6 +7,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Cpu } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import { useAuth } from './lib/AuthContext';
 import { useTheme } from './lib/ThemeContext';
 import { signInWithGoogle } from './lib/firebase';
@@ -89,6 +90,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
+      <Analytics />
     </Router>
   );
 }
